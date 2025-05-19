@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "222b5737-b2f1-4f84-a02c-4b9c57d63101": {
+      "ProjectGuid": "222b5737-b2f1-4f84-a02c-4b9c57d63101",
+      "DisplayName": "CIFAR-10-CUDA",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
