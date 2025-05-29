@@ -31,9 +31,4 @@ __PENSAU EN ADAPTAR ES PATH ABSOLUT A `PATH_MODELO`__
 __EXECUTAU-HO TOT SEMPRE DES DE SA ROOT DES PROJECTE PER NO DESCARREGAR DOS PICS TOT__
 
 
-### C/CUDA
-
-<details>
-  <summary>Desplegar</summary>
-  <img src="C-CUDA.tar" style="max-width: 100%;">
-</details>
+### Cpp
