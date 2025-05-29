@@ -48,7 +48,7 @@ def evaluate(modelo, dataloader, titulo):
 
     if MODO_MONITOREO:
         end = time.time()
-        print(f"{end - start:.4f}")
+        print(f"{titulo} - {end - start:.4f}")
         return end-start
     else:
         print("OK")
@@ -62,6 +62,8 @@ def evaluate(modelo, dataloader, titulo):
 # === MAIN ===
 if __name__ == "__main__":
 
+
+
     print(f"\nDispositivo: {DEVICE} - {torch.cuda.get_device_name(DEVICE)}\n")
 
     modelo = models.resnet18()
@@ -74,29 +76,16 @@ if __name__ == "__main__":
         gpu_total = 0
         start_total = time.time()
 
-    for i in range(100 if MODO_MONITOREO else 1):
+    for i in range(50 if MODO_MONITOREO else 1):
 
-        if MODO_MONITOREO:
-            print(f"\n=== ITERACIÓN {i+1} ===")
-            gpu_loop = 0
-            start_loop = time.time()
-
-        for name in ["normal","horizontal_flip", "random_rotation", "gaussian_blur", "color_jitter"]:
+        for name in ["gaussian_blur"]:
 
             if MODO_MONITOREO:
                 test_loader = get_preprocessed_loader(name)
-                gpu_loop += evaluate(modelo, test_loader, titulo=f"Matriz de confusión - {name}")
+                gpu_total += evaluate(modelo, test_loader, titulo=f"{i+1}")
             else:
                 test_loader = get_preprocessed_loader(name)
                 evaluate(modelo, test_loader, titulo=f"Matriz de confusión - {name}")
-
-        if MODO_MONITOREO:
-            end_loop = time.time()
-            gpu_total += gpu_loop
-            print(f"\n===================================================")
-            print(f"GPU: {gpu_loop:.4f}")
-            print(f"Exec: {end_loop - start_loop:.4f}")
-            print(f"===================================================\n")
     
     if MODO_MONITOREO:
         end_total = time.time()
